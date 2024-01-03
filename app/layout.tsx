@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter as FontSans } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import './globals.css'
+import Sidebar from '@/components/sidebar';
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -21,12 +22,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >{children}</body>
+      <body>
+        <div className="flex h-screen  max-h-screen bg-gray-50 overflow-y-auto">
+          <Sidebar />
+          <div className="flex flex-col flex-1 w-full overflow-y-auto">
+            {/**top bar */}
+            <main className="h-full flex flex-col justify-between overflow-y-auto">
+              <div className="p-5 mb-auto">
+                {children}
+              </div>
+              {/**footer */}
+            </main>
+          </div>
+        </div>
+      </body>
     </html>
   )
 }
