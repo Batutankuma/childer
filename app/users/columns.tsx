@@ -13,15 +13,16 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 
-
-export type Payment = {
+//modele de données
+export type User = {
   id: string
-  amount: number
-  status: "pending" | "processing" | "success" | "failed"
+  nom: string
+  prenom: string
+  postnom: string
   email: string
 }
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<User>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -45,8 +46,16 @@ export const columns: ColumnDef<Payment>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "nom",
+    header: "Nom",
+  },
+  {
+    accessorKey: "postnom",
+    header: "Postnom",
+  },
+  {
+    accessorKey: "prenom",
+    header: "Prenom",
   },
   {
     accessorKey: "email",
@@ -63,19 +72,7 @@ export const columns: ColumnDef<Payment>[] = [
     }
   },
   {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"))
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount)
- 
-      return <div className="text-right font-medium">{formatted}</div>
-    },
-  },
-  {
+    accessorKey:"Action",
     id: "actions",
     cell: ({ row }) => {
       const payment = row.original
@@ -104,3 +101,19 @@ export const columns: ColumnDef<Payment>[] = [
     },
   },
 ]
+
+/**
+ *  {
+    accessorKey: "amount",
+    header: () => <div className="text-right">Amount</div>,
+    cell: ({ row }) => {
+      const amount = parseFloat(row.getValue("amount"))
+      const formatted = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+      }).format(amount)
+ 
+      return <div className="text-right font-medium">{formatted}</div>
+    },
+  },
+ */

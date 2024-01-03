@@ -44,11 +44,11 @@ function Sidebar() {
             <span className="px-3 text-green-300 font-light">Navigation</span>
             <li>
               <Link
-                href="/paiement"
-                className={activeMenu("/paiement")}
+                href="/users"
+                className={activeMenu("/users")}
               >
                 <Icons.monney />
-                <span className="flex-1 ml-3 whitespace-nowrap">Paiements</span>
+                <span className="flex-1 ml-3 whitespace-nowrap">User</span>
               </Link>
             </li>
             <li>
