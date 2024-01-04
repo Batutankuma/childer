@@ -4,20 +4,19 @@ import { User, columns } from "./columns"
 import { DataTable } from "./data-table"
 import { FileText, Table } from "lucide-react";
 import { DialogAjout } from "./dialog";
-import prismadb from "@/lib/prismaconfig";
+import {prisma} from "@/lib/prismaconfig";
 
 
 
 
 async function getData(): Promise<User[]> {
     // Fetch data from your API here.
-    return await prismadb.user.findMany();
+    return await prisma.user.findMany();
 }
 
 export default async function UserPage() {
     const data = await getData();
     
-
     return (
         <div className="container mx-auto py-10">
             <p>Paiement </p>
